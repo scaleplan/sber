@@ -1,0 +1,14 @@
+{
+    "name": "scaleplan/sber",
+    "description": "Sberbank payment adapter",
+    "autoload": {
+        "psr-4": {
+            "Scaleplan\\Sberbank\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.2",
+        "scaleplan/http": "dev-master"
+        "scaleplan/dto": "dev-master"
+    }
+}
