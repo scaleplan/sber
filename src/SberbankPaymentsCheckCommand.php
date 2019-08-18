@@ -79,6 +79,8 @@ class SberbankPaymentsCheckCommand extends AbstractCommand
                         dispatch(RejectEvent::class);
                         break;
                 }
+
+                $this->redis->sRemove(static::SBERBANK_PAYMENTS_KEY, $paymentId);
             }
         } catch (\Throwable $e) {
             $this->logger->error($e->getMessage());

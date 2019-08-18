@@ -10,6 +10,6 @@
         "php": ">=7.2",
         "scaleplan/http": "dev-master",
         "scaleplan/dto": "dev-master",
-        "scaleplan/daemon": "dev-master"
+        "scaleplan/console": "dev-master"
     }
 }
