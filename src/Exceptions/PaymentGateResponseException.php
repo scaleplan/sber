@@ -4,8 +4,6 @@ namespace Scaleplan\Sberbank\Exceptions;
 
 /**
  * Class InvalidDigestException
- *
- * @package App\Services\Exception
  */
 class PaymentGateResponseException extends SberbankException
 {

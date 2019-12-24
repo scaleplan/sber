@@ -6,8 +6,6 @@ use Scaleplan\Sberbank\Sberbank;
 
 /**
  * Class CompanyCardRefillStructure
- *
- * @package App\Structures
  */
 class CardRefillDTO
 {

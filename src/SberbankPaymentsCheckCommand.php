@@ -1,20 +1,17 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Scaleplan\Sberbank;
 
 use Psr\Log\LoggerInterface;
 use Scaleplan\Cache\RedisCache;
 use Scaleplan\Console\AbstractCommand;
 use Scaleplan\Sberbank\Events\CompletedEvent;
 use Scaleplan\Sberbank\Events\RejectEvent;
-use Scaleplan\Sberbank\Sberbank;
 use function Scaleplan\DependencyInjection\get_required_container;
 use function Scaleplan\Event\dispatch;
 
 /**
  * Class PaymentsCheckDaemonCommand
- *
- * @package App\Console\Commands
  */
 class SberbankPaymentsCheckCommand extends AbstractCommand
 {
