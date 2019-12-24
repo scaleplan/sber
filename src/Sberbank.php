@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Scaleplan\Sberbank;
 
@@ -80,8 +81,12 @@ class Sberbank
      * @param string $sberbankOrderId
      *
      * @return RemoteResponse
+     *
+     * @throws SberbankException
+     * @throws \Scaleplan\DTO\Exceptions\ValidationException
      * @throws \Scaleplan\Helpers\Exceptions\EnvNotFoundException
-     * @throws \Exception
+     * @throws \Scaleplan\Http\Exceptions\ClassMustBeDTOException
+     * @throws \Throwable
      */
     public function revertHoldPayment(string $sberbankOrderId) : RemoteResponse
     {
@@ -102,7 +107,11 @@ class Sberbank
      *
      * @return RemoteResponse
      *
-     * @throws \Exception
+     * @throws SberbankException
+     * @throws \Scaleplan\DTO\Exceptions\ValidationException
+     * @throws \Scaleplan\Helpers\Exceptions\EnvNotFoundException
+     * @throws \Scaleplan\Http\Exceptions\ClassMustBeDTOException
+     * @throws \Throwable
      */
     protected function callSberbankApi($operation, DTO $dto) : RemoteResponse
     {
@@ -160,10 +169,15 @@ class Sberbank
     }
 
     /**
-     * @param $request
+     * @param Request $request
      *
      * @return SberbankResponseDTO
-     * @throws \Exception
+     *
+     * @throws SberbankException
+     * @throws \Scaleplan\DTO\Exceptions\ValidationException
+     * @throws \Scaleplan\Helpers\Exceptions\EnvNotFoundException
+     * @throws \Scaleplan\Http\Exceptions\ClassMustBeDTOException
+     * @throws \Throwable
      */
     public function checkSuccessPayment(Request $request) : SberbankResponseDTO
     {
@@ -210,8 +224,12 @@ class Sberbank
      * @param CardRefillDTO $dto
      *
      * @throws InvalidDigestException
+     * @throws SberbankException
      * @throws UnprocessableCurrencyException
+     * @throws \Scaleplan\DTO\Exceptions\ValidationException
      * @throws \Scaleplan\Helpers\Exceptions\EnvNotFoundException
+     * @throws \Scaleplan\Http\Exceptions\ClassMustBeDTOException
+     * @throws \Throwable
      */
     public function refillConfirm(CardRefillDTO $dto) : void
     {
@@ -222,8 +240,12 @@ class Sberbank
      * @param CardRefillDTO $dto
      *
      * @throws InvalidDigestException
+     * @throws SberbankException
      * @throws UnprocessableCurrencyException
+     * @throws \Scaleplan\DTO\Exceptions\ValidationException
      * @throws \Scaleplan\Helpers\Exceptions\EnvNotFoundException
+     * @throws \Scaleplan\Http\Exceptions\ClassMustBeDTOException
+     * @throws \Throwable
      */
     private function checkSberbankResponse(CardRefillDTO $dto) : void
     {
@@ -258,8 +280,12 @@ class Sberbank
     /**
      * @param string $sberbankOrderId
      *
+     * @throws SberbankException
+     *
+     * @throws \Scaleplan\DTO\Exceptions\ValidationException
      * @throws \Scaleplan\Helpers\Exceptions\EnvNotFoundException
-     * @throws \Exception
+     * @throws \Scaleplan\Http\Exceptions\ClassMustBeDTOException
+     * @throws \Throwable
      */
     public function refund(string $sberbankOrderId) : void
     {
@@ -277,7 +303,8 @@ class Sberbank
      *
      * @return int
      *
-     * @throws \Exception
+     * @throws PaymentGateResponseException
+     * @throws \Throwable
      */
     public function checkPayment(string $sberbankOrderId) : int
     {
