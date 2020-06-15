@@ -9,5 +9,5 @@ namespace Scaleplan\Sberbank\Exceptions;
  */
 class PaymentReverseException extends SberbankException
 {
-    public const MESSAGE = 'Payment reverse error.';
+    public const MESSAGE = 'Ошибка отмены платежа.';
 }

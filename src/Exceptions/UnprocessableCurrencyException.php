@@ -9,5 +9,5 @@ namespace Scaleplan\Sberbank\Exceptions;
  */
 class UnprocessableCurrencyException extends SberbankException
 {
-    public const MESSAGE = 'Unprocessable currency.';
+    public const MESSAGE = 'Необслуживаемая валюта.';
 }

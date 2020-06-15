@@ -7,5 +7,5 @@ namespace Scaleplan\Sberbank\Exceptions;
  */
 class PaymentGateResponseException extends SberbankException
 {
-    public const MESSAGE_FIRST = 'Payment gate response error.';
+    public const MESSAGE_FIRST = 'Ошибка ответа от платежного шлюза.';
 }

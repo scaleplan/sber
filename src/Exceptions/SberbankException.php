@@ -9,7 +9,7 @@ namespace Scaleplan\Sberbank\Exceptions;
  */
 class SberbankException extends \Exception
 {
-    public const MESSAGE = 'Sberbank API request error.';
+    public const MESSAGE = 'Ошибка запроса к Sberbank API.';
 
     /**
      * SberbankException constructor.

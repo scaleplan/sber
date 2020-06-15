@@ -155,14 +155,14 @@ class Sberbank
         $responseDTO = $response->getResult();
         if (!$responseDTO) {
             throw new SberbankException(
-                'Sberbank API call fails. ' . json_encode($request->getParams(), JSON_UNESCAPED_UNICODE),
+                'Ошибка вызова Sberbank API: ' . json_encode($request->getParams(), JSON_UNESCAPED_UNICODE),
                 HttpStatusCodes::HTTP_BAD_REQUEST
             );
         }
 
         if ($responseDTO->getErrorCode()) {
             throw new SberbankException(
-                'Sberbank API call returns an error: ' . $responseDTO->getErrorCode(),
+                'Sberbank API вернул ошибку: ' . $responseDTO->getErrorCode(),
                 $response->getHttpCode()
             );
         }

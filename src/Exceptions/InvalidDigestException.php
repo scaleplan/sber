@@ -9,5 +9,5 @@ namespace Scaleplan\Sberbank\Exceptions;
  */
 class InvalidDigestException extends SberbankException
 {
-    public const MESSAGE = 'Invalid Sberbank response digest.';
+    public const MESSAGE = 'Неверный дайджест ответа от Сбербанка.';
 }
