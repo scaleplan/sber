@@ -20,6 +20,7 @@ use Scaleplan\Sberbank\Exceptions\PaymentGateResponseException;
 use Scaleplan\Sberbank\Exceptions\SberbankException;
 use Scaleplan\Sberbank\Exceptions\UnprocessableCurrencyException;
 use function Scaleplan\Helpers\get_required_env;
+use function Scaleplan\Translator\translate;
 
 /**
  * Class Sberbank
@@ -148,6 +149,11 @@ class Sberbank
      * @param RemoteResponse $response
      *
      * @throws SberbankException
+     * @throws \ReflectionException
+     * @throws \Scaleplan\DependencyInjection\Exceptions\ContainerTypeNotSupportingException
+     * @throws \Scaleplan\DependencyInjection\Exceptions\DependencyInjectionException
+     * @throws \Scaleplan\DependencyInjection\Exceptions\ParameterMustBeInterfaceNameOrClassNameException
+     * @throws \Scaleplan\DependencyInjection\Exceptions\ReturnTypeMustImplementsInterfaceException
      */
     protected function responseCheck(Request $request, RemoteResponse $response) : void
     {
@@ -155,14 +161,17 @@ class Sberbank
         $responseDTO = $response->getResult();
         if (!$responseDTO) {
             throw new SberbankException(
-                'Ошибка вызова Sberbank API: ' . json_encode($request->getParams(), JSON_UNESCAPED_UNICODE),
+                translate(
+                    'sber.api-call-error',
+                    ['message' => json_encode($request->getParams(), JSON_UNESCAPED_UNICODE),]
+                ),
                 HttpStatusCodes::HTTP_BAD_REQUEST
             );
         }
 
         if ($responseDTO->getErrorCode()) {
             throw new SberbankException(
-                'Sberbank API вернул ошибку: ' . $responseDTO->getErrorCode(),
+                translate('sber.api-response-error', ['message' => $responseDTO->getErrorCode(),]),
                 $response->getHttpCode()
             );
         }

@@ -1,0 +1,7 @@
+api-call-error: 'Ошибка вызова Sberbank API: :message'
+api-response-error: 'Sberbank API вернул ошибку: :message'
+digest-corrupt: Неверный дайджест ответа от Сбербанка.
+paygate-response-error: Ошибка ответа от платежного шлюза.
+payment-cancel-error: Ошибка отмены платежа.
+api-error: Ошибка запроса к Sberbank API.
+unprocessable-currency: Необслуживаемая валюта.

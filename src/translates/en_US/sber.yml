@@ -1,0 +1,7 @@
+api-call-error: 'Sberbank API call error: :message'
+api-response-error: 'Sberbank API returned error: :message'
+digest-corrupt: Sberbank response digest corrupted.
+paygate-response-error: Payment gateway response error.
+payment-cancel-error: Payment cancel error.
+api-error: Sberbank API request error.
+unprocessable-currency: Unprocessable currency.
