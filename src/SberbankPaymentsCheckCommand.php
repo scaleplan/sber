@@ -32,6 +32,8 @@ class SberbankPaymentsCheckCommand extends AbstractCommand
     /**
      * SberbankPaymentsCheckCommand constructor.
      *
+     * @param array $arguments
+     *
      * @throws \ReflectionException
      * @throws \Scaleplan\Cache\Exceptions\RedisCacheException
      * @throws \Scaleplan\Console\Exceptions\CommandSignatureIsEmptyException
@@ -40,9 +42,10 @@ class SberbankPaymentsCheckCommand extends AbstractCommand
      * @throws \Scaleplan\DependencyInjection\Exceptions\ParameterMustBeInterfaceNameOrClassNameException
      * @throws \Scaleplan\DependencyInjection\Exceptions\ReturnTypeMustImplementsInterfaceException
      */
-    public function __construct()
+    public function __construct(array $arguments)
     {
-        parent::__construct();
+        parent::__construct($arguments);
+
         $this->logger = get_required_container(LoggerInterface::class);
         $this->redis = (new RedisCache(true))->getCacheConnect();
     }
